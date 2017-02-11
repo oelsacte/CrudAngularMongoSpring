@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="./js/angular.min.js"></script>
+<script src="./js/angular-resource.min.js"></script>
+<script src="./js/app.js"></script>
+<title>Catálogo de Libros</title>
+</head>
+<body ng-app="estanteApp">
+	<div ng-controller="libroController" class="container-fluid table-responsive">
+		<h1>Catálogo de Libros</h1>
+		<form name="libroForm">
+			<table class="table table-striped table-condensed">
+				<tr>
+					<th>ID</th>
+					<th>Titulo</th>
+					<th>Autor</th>
+				</tr>
+				<tr ng-repeat="row in libros">
+					<td><span ng-model="row.id"></span></td>
+					<td><span ng-model="row.titulo"></span></td>
+					<td><span ng-model="row.autor"></span></td>
+				</tr>
+			</table>
+			<div class="alert alert-info">
+				<strong>{{Message}}</strong>
+			</div>
+			<div class="form-group">
+				<label>Titulo</label>
+				<input class="form-control" type="text"	id="titulo" ng-model="libroForm.titulo" placeholder="titulo" autocomplete="off">
+			</div>
+			<div class="form-group">
+				<label>Autor</label> 
+				<input class="form-control" type="text"	id="autor" ng-model="libroForm.autor" placeholder="autor" autocomplete="off">
+			</div>
+			<div class="form-group">
+				<label>Paginas</label> 
+				<input class="form-control" type="text"	id="paginas" ng-model="libroForm.paginas" placeholder="paginas"	autocomplete="off">
+			</div>
+
+			<div class="btn-group">
+				<button class="btn btn_blue" type="button" data-ng-click="create()" id="Create">Create</button>
+				<button class="btn btn_blue" type="button" data-ng-click="refresh()" id="refresh">Refresh</button>
+			</div>
+
+			<div class="form-group">
+				<label class="blue_font col-*-1">ID</label> 
+				<input class="form-control" type="text" id="ID" ng-model="libroForm.id" placeholder="ID" autocomplete="off">
+			</div>
+			
+			<div class="btn-group">
+				<button class="btn btn_blue" type="button" data-ng-click="deleteRec()" id="Delete">Delete</button>
+				<button class="btn btn_blue" type="button" data-ng-click="update()" id="Update">Update</button>
+			</div>
+		</form>
+	</div>
+</body>
+</html>
