@@ -1,5 +1,6 @@
 var app = angular.module('estanteApp',['ngResource']);
 
+
 app.controller('libroController',['$scope','$resource', function($scope,$resource){
 	function mostrarTodosLibros()
 	{
@@ -35,4 +36,71 @@ app.controller('libroController',['$scope','$resource', function($scope,$resourc
 		$scope.libroForm.autor= "";
 		$scope.libroForm.paginas= "";		
 	};
+	
+	$scope.deleteRec = function(){
+		Libro = $resource('http://localhost:8080/delete/:id',{},{save: {method: 'DELETE', params: {id: '@id'}}});
+		
+		Libro.delete({id: $scope.libroForm.id}).then(function successCallback(response){
+			$scope.Message = response;
+		}, function errorCallback(response){
+			console.log("Cruza por error CallBack");
+		});
+		
+		$scope.libroForm.titulo = "";
+		$scope.libroForm.autor= "";
+		$scope.libroForm.paginas= "";		
+	}
+	
+	$scope.update = function(){
+		Libro = $resource(
+    		    "http://localhost:8080/update/:id",{},{save: {method:'PUT', params: {id: '@id'}}}
+    	);
+		
+		var libro = {};
+		
+		//libro.id = $scope.personForm.id;
+		libro.titulo = $scope.libroForm.titulo;
+		libro.autor = $scope.libroForm.autor;
+		libro.paginas = $scope.libroForm.paginas;
+		
+		console.log(libro);
+		
+		$scope.Message = Libro.save(libro);
+		
+		//$scope.personForm.id = "";
+		$scope.libroForm.titulo = "";
+		$scope.libroForm.autor= "";
+		$scope.libroForm.paginas= "";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }]);
