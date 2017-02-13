@@ -7,4 +7,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 @RepositoryRestResource(collectionResourceRel = "Libro", path="libro")
 public interface LibroRepository extends MongoRepository<Libro, Long> {
+	
 }

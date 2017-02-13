@@ -20,6 +20,7 @@ public class LibroController
 	public Object index()
 	{
 		System.out.println("Entrando a mostrar todo");
+		System.out.println("Libros recuperados " + libroService.findAll().toString());
 		return libroService.findAll();
 	}
 	
@@ -47,7 +48,7 @@ public class LibroController
 	
 	@RequestMapping(value = "/delete/{id}")
 	@ResponseBody
-	public String delete(@PathVariable Long id)
+	public String delete(@PathVariable String id)
 	{
 		Libro libro= null;
 		try
@@ -65,7 +66,7 @@ public class LibroController
 	
 	@RequestMapping(value = "/update/{id}")
 	@ResponseBody
-	public String update(@RequestBody Libro libro, @PathVariable Long id)
+	public String update(@RequestBody Libro libro, @PathVariable String id)
 	{
 		try
 		{

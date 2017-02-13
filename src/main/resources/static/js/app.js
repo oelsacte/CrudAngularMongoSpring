@@ -4,7 +4,7 @@ var app = angular.module('estanteApp',['ngResource']);
 app.controller('libroController',['$scope','$resource', function($scope,$resource){
 	function mostrarTodosLibros()
 	{
-		$scope.libros = $resource('http://localhost:8080/libro').query(function(data){return data;});
+		$scope.libros = $resource('http://localhost:8080/libro').query(function(data){console.log(data);return data;});
 	};
 	
 	mostrarTodosLibros();
@@ -22,7 +22,7 @@ app.controller('libroController',['$scope','$resource', function($scope,$resourc
 		
 		var libro = {};
 		
-		//libro.id = $scope.personForm.id;
+		libro.id = $scope.libroForm.id;
 		libro.titulo = $scope.libroForm.titulo;
 		libro.autor = $scope.libroForm.autor;
 		libro.paginas = $scope.libroForm.paginas;
@@ -31,7 +31,7 @@ app.controller('libroController',['$scope','$resource', function($scope,$resourc
 		
 		$scope.Message = Libro.save(libro);
 		
-		//$scope.personForm.id = "";
+		$scope.libroForm.id = "";
 		$scope.libroForm.titulo = "";
 		$scope.libroForm.autor= "";
 		$scope.libroForm.paginas= "";		
@@ -46,6 +46,7 @@ app.controller('libroController',['$scope','$resource', function($scope,$resourc
 			console.log("Cruza por error CallBack");
 		});
 		
+		$scope.libroForm.id = "";
 		$scope.libroForm.titulo = "";
 		$scope.libroForm.autor= "";
 		$scope.libroForm.paginas= "";		
@@ -58,7 +59,7 @@ app.controller('libroController',['$scope','$resource', function($scope,$resourc
 		
 		var libro = {};
 		
-		//libro.id = $scope.personForm.id;
+		libro.id = $scope.personForm.id;
 		libro.titulo = $scope.libroForm.titulo;
 		libro.autor = $scope.libroForm.autor;
 		libro.paginas = $scope.libroForm.paginas;
@@ -67,7 +68,7 @@ app.controller('libroController',['$scope','$resource', function($scope,$resourc
 		
 		$scope.Message = Libro.save(libro);
 		
-		//$scope.personForm.id = "";
+		$scope.libroForm.id = "";
 		$scope.libroForm.titulo = "";
 		$scope.libroForm.autor= "";
 		$scope.libroForm.paginas= "";

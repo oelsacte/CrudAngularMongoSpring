@@ -14,9 +14,9 @@ public class LibroService
 		return libroRepository.findAll();
 	}
 	
-	public Libro findById(Long id)
+	public Libro findById(String id)
 	{
-		return libroRepository.findOne(id);
+		return libroRepository.findOne(Long.valueOf(id));
 	}
 	
 	public Libro save(Libro libro)
