@@ -1,4 +1,4 @@
-var app = angular.module('estanteApp',['ngResource']);
+
 
 
 app.controller('libroController',['$scope','$resource', function($scope,$resource){
