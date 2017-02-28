@@ -1,7 +1,7 @@
 
 
 
-app.controller('libroController',['$scope','$resource', function($scope,$resource){
+app.controller('libroController',['$scope',, function($scope){
 	function mostrarTodosLibros()
 	{
 		$scope.libros = $resource('http://localhost:8080/libro').query(function(data){console.log(data);return data;});
